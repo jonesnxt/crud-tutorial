@@ -1,6 +1,6 @@
 var crud = {};
 crud.service = {};
-crud.service.endpoint = "https://backend-3faa7a49-ad9d-4dac-a66a-28f7eb5c9824.koji-staging.com";
+crud.service.endpoint = window.location.origin.replace('frontend', 'backend'); // watch out for this on deploy?
 crud.ui = {};
 
 crud.ui.getlist = function() {
