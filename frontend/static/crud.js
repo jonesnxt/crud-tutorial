@@ -37,7 +37,7 @@ crud.ui.addRow = function(id, value) {
     idCell.appendChild(document.createTextNode(id));
     valCell.appendChild(document.createTextNode(value));   
     actionCell.innerHTML = '<a href="#" onclick="return crud.ui.delete(\''+id+'\');"><i class="fas fa-minus deletebutton"></i></a>';
-    actionCell.innerHTML += '<a style="padding-left:5px;" href="#" onclick="return crud.ui.update(\''+id+'\');"><i class="fas fa-pencil-alt updatebutton"></i></a>';
+    actionCell.innerHTML += '<a style="padding-left:5px;" href="#" onclick="return crud.ui.update(\''+id+'\', \''+value+'\');"><i class="fas fa-pencil-alt updatebutton"></i></a>';
 }
 
 crud.ui.addNew = function(){
@@ -52,23 +52,28 @@ crud.ui.addNew = function(){
 }
 
 crud.ui.delete = function(id){
-    var row = document.getElementById(id.trim());
-    crud.service.send('/data/'+id,'delete', null, function(res){
-      console.log(res);  
-    });
+    var r = confirm("Are you sure?");
+    if (r){
+        var row = document.getElementById(id.trim());
+        crud.service.send('/data/'+id,'delete', null, function(res){
+        console.log(res);  
+        });
 
-    row.parentNode.removeChild(row);
+        row.parentNode.removeChild(row);
+    }
 }
 
-crud.ui.update = function(id){
-    var newVal = prompt("Please enter a new value for "+id, "");
-    var row = document.getElementById(id.trim());
+crud.ui.update = function(id, currentvalue){
+    var newVal = prompt("Please enter a new value for "+id, currentvalue);
+    if (newVal){
+        var row = document.getElementById(id.trim());
 
-    crud.service.send('/data/'+id, 'post', {id, value: newVal}, function(res){
-      console.log(res);
-    })
-    
-    row.children[1].innerHTML = newVal;
+        crud.service.send('/data/'+id, 'post', {id, value: newVal}, function(res){
+        console.log(res);
+        })
+        
+        row.children[1].innerHTML = newVal;
+    }
 }
 
 crud.service.send = function(endpoint, method, request_body, callback){

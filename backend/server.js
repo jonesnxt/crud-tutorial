@@ -8,8 +8,6 @@ import "babel-polyfill";
 /** requirements for Database */
 import Jiro from '@madewithjiro/jiro-sdk';
 const { Store } = new Jiro();
-
-
 const uuid = require('uuid');
 /** /END requirements for Database */
 
@@ -46,11 +44,17 @@ app.get('/', (req, res) => {
     console.log('request received for /');
 });
 
+/**
+ * Sample ERROR endpoint.
+ */
 app.get('/error', (req, res) => {
   console.log('Received Bad Request to GET /error');
   res.status(400).json({error: 'Bad Request, check the README.md for known endpoints!'});
 })
 
+/**
+ *  Retrieves the list of all the objects stored in the baseDB. 
+ */
 app.get('/data', async (req, res) => {    
     var objects = await Store.get('baseDB');
     res.status(200).json(objects)
@@ -144,7 +148,11 @@ app.delete('/data/:id', async (req, res) => {
   }  
 });
 
-// Start backend server
+/**
+ * This code starts our backend server, the Lambda bits are for when we 'deploy' as we host your project in an AWS Lambda function.
+ * 
+ * For development the `else` bit will just run the server on your development container for use in the Koji Editor.
+ */
 const isInLambda = !!process.env.LAMBDA_TASK_ROOT;
 if (isInLambda) {
     const serverlessExpress = require('aws-serverless-express');
