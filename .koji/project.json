@@ -1,7 +1,7 @@
 {
     "project": {
-        "name": "Jewel Match",
-        "description": "A game",
+        "name": "Koji CRUD Base",
+        "description": "A Sample of how to do Frontend->Backend calls with CRUD functions to our simple datastore",
         "version": "1.0.0"
     }
 }

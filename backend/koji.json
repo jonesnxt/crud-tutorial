@@ -1,0 +1,9 @@
+{
+  "routes": [{
+    "name": "post",
+    "path": "backend/",
+    "route": "/data",
+    "method": "GET",
+    "isProtected": false
+  }]
+}

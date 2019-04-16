@@ -1,15 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+const path = require('path');
+const express = require('express') 
+const app = express()
 
-import AppContainer from 'helpers/AppContainer';
+app.use('/', express.static(path.join(__dirname, 'static'), {index: "index.html"}));
 
-import 'sanitize.css';
+app.listen(8080);
 
-ReactDOM.render(
-  <AppContainer />,
-  document.getElementById('app'),
-);
+console.log('[webpack] Frontend server started (port 8080)');
+console.log('webpack built 1b7eb346644fe27981b6 in 4661ms');
+console.log('##frontend-built##');
 
-if (process.env.NODE_ENV === 'production') {
-  require('offline-plugin/runtime').install();
-}

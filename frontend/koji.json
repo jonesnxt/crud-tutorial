@@ -1,0 +1,7 @@
+{
+	"pages": [{
+		"name": "Basic CRUD",
+        "route": "/",
+        "path": "frontend"
+	}]
+}

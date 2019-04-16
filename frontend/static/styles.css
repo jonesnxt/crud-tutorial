@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h3 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+table, th {
+  border: 1px solid lightslategray;
+}
+
+td {
+    text-align:left;
+    border: 1px solid lightgray;
+}
+
+.fieldLabel{
+    padding:5px;
+    font-size: 12px;
+}
+
+.inputValue{
+    width:85%;
+}
+
+.crudtable {
+    width: 100%;
+}
+
+.addbutton {  
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;        
+    font-size: 16px;
+    border-radius: 4px;
+    padding:3px;
+    vertical-align: bottom;
+}
+
+.deletebutton {
+    background-color: red;
+    border-radius:50%;
+    color:white;
+    padding:3px;
+    vertical-align:bottom;
+    font-size:16px;
+    border:none;
+}
+
+.updatebutton{
+    background-color: darkgoldenrod;
+    border-radius:50%;
+    color:white;
+    padding:3px;
+    vertical-align:bottom;
+    font-size:16px;
+    border:none;
+}
+
+.addbutton:active { 
+  background-color: darkgreen;
+}
+
+.datarow {
+  font-family: 'Courier New';
+  font-size: 12px;
+}
